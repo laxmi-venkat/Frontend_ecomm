@@ -1,21 +1,21 @@
 import axios from "axios";
-import { useRef,useState } from "react";
-import {useNavigate} from "react-router-dom";
-const Login = ()=>{
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+const Login = () => {
     const ref1 = useRef(null);
     const ref2 = useRef(null);
-    
+
     const navigate = useNavigate();
-    
-    const login = async ()=>{
-        const res = await axios.post(`http://localhost:9090/login`,{"username":ref1.current.value,"password":ref2.current.value});
-        const {data} = res;
-        const {login} = data;
+
+    const login = async () => {
+        const res = await axios.post(`http://localhost:9090/login`, { "username": ref1.current.value, "password": ref2.current.value });
+        const { data } = res;
+        const { login } = data;
         login == "success" ? navigate("/dashboard") : navigate("/error");
     }
 
 
-    return(
+    return (
         <>
             <fieldset>
                 <legend>LOGIN FORM</legend>
